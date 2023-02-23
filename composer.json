@@ -1,0 +1,64 @@
+{
+    "name": "thomaslobjoie/rediary-api-client",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-curl": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "cuyz/valinor": "0.13.0",
+        "guzzlehttp/guzzle": "^6.0 || ^7.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "^5.0||^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Resdiary\\ApiClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Resdiary\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "process-timeout": 1200
+    },
+    "scripts": {
+        "test": [
+            "@test-quality",
+            "@test-unit"
+        ],
+        "test-quality": [
+            "@phpstan",
+            "@phpcs"
+        ],
+        "test-unit": [
+            "@phpunit"
+        ],
+        "integrate": [
+            "@phpcs",
+            "@phpstan",
+            "@phpunit"
+        ],
+        "phpstan": "./vendor/bin/phpstan analyse",
+        "phpcs": "./vendor/bin/php-cs-fixer fix",
+        "phpcbf": "./vendor/bin/phpcbf",
+        "phpunit": "./vendor/bin/phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1-dev"
+        }
+    }
+}
